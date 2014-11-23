@@ -14,6 +14,6 @@ The extension allows for users to specify their endpoint that should recieve the
 | collectionTime  | JavaScript date for the time of collection.         |
 | userBrowser     | Browser user-agent of the collector.                |
 | collectionData  | All the data collected, deduplicated and organized. |
-| collectionCount |                                                     |
+| collectionCount | Number of items collected.                          |
 
 To install, check the extension out and load the unpacked version into your browser. 
