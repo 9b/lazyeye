@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "LazyEye",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "Search pages browsed by the user for interesting artifacts",
 	"icons": { 
 		"16" : "ico/16.png",

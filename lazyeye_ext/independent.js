@@ -39,32 +39,31 @@ $(document).ready(function(){
 		} else {
             console.log('No endpoint specified. Appending data to page');
             collectionData = postData['collectionData'];
-            $('#lazyeye_fieldset').remove();
-            fieldset = document.createElement('fieldset');
-            fieldset.id = 'lazyeye_fieldset';
-            fieldset.style = "color:blue; border-style: solid;";
-            legend = document.createElement('legend');
-            legend.innerHTML = '<h1>LazyEye</h1>';
-            fieldset.appendChild(legend);
-            for(var key in collectionData){
-                if(collectionData[key].length == 0)
-                    continue;
-                pTag = document.createElement('p');
-                label= document.createElement('label');
-                label.innerHTML = '<b>'+key+'</b> ('+collectionData[key].length+')';
-                textarea = document.createElement('textarea');
-                textarea.id = key;
-                textarea.name = key;
-                textarea.cols = 50;
-                for(i=0;i<collectionData[key].length;i++){
-                    value = collectionData[key][i];
-                    textarea.innerHTML += value+'\n';
+            
+            var container = document.createElement("div");
+            container.id = "lazyeye_container";
+            $(document.body).prepend(container);
+            $('#lazyeye_container')
+            .css('background-color', '#eee').css('position', 'fixed').css('top', '0px')
+            .css('left', '0px').css('right', '0px').css('height', '40px').css('z-index', '100000')
+            .css('padding', '5px').css('border-bottom', '1px solid #333').css('font-size', '15px')
+            .css('text-align', 'left').css('font-family', 'sans-serif');
+            $('body').css('margin-top', '40px')
+            
+            var output = '';
+            for (var key in collectionData) {
+                if (collectionData[key].length == 0) continue;
+                output += ' &nbsp;' + key + ' (' + collectionData[key].length + ') ';
+                output += '<textarea id="' + key + '" class="lazyeye_ta" rows="1" cols="10" onclick="this.select()">';
+                var collected = '';
+	            for (i=0; i < collectionData[key].length; i++) {
+	                value = collectionData[key][i];
+	                collected += value + '\n';
                 }
-                pTag.appendChild(label);
-                pTag.appendChild(textarea);
-                fieldset.appendChild(pTag);
-            }
-            $(document.body).prepend(fieldset);
+                output += collected + '</textarea> ';
+			}
+            $('#lazyeye_container').html('<b>LazyEye : </b>' + output);
+            $('.lazyeye_ta').css('vertical-align', 'middle');
 		}
 	});
 });
