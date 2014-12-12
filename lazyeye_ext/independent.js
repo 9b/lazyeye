@@ -37,7 +37,32 @@ $(document).ready(function(){
 				}
 			});
 		} else {
-			console.log("FUCK YOU! FUCK YOU! IM FUCKIN' DYING HERE!"); // you get the gist
+            // No endpoint was specified
+            collectionData = postData['collectionData'];
+            fieldset = document.createElement('fieldset');
+            legend = document.createElement('legend');
+            legend.innerHTML = '<h1>LazyEye</h1>';
+            fieldset.appendChild(legend);
+            for(var key in collectionData){
+                if(collectionData[key].length == 0)
+                    continue;
+                pTag = document.createElement('p');
+                label= document.createElement('label');
+                label.innerHTML = '<b>'+key+'</b>';
+                textarea = document.createElement('textarea');
+                textarea.id = key;
+                textarea.name = key;
+                textarea.cols = 50;
+                for(i=0;i<collectionData[key].length;i++){
+                    value = collectionData[key][i];
+                    textarea.innerHTML += value+'\n';
+                }
+                pTag.appendChild(label);
+                pTag.appendChild(textarea);
+                fieldset.appendChild(pTag);
+            }
+            body = document.getElementsByTagName('body')[0];
+            body.appendChild(fieldset);
 		}
 	});
 });
