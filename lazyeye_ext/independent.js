@@ -37,9 +37,12 @@ $(document).ready(function(){
 				}
 			});
 		} else {
-            // No endpoint was specified
+            console.log('No endpoint specified. Appending data to page');
             collectionData = postData['collectionData'];
+            $('#lazyeye_fieldset').remove();
             fieldset = document.createElement('fieldset');
+            fieldset.id = 'lazyeye_fieldset';
+            fieldset.style = "color:blue; border-style: solid;";
             legend = document.createElement('legend');
             legend.innerHTML = '<h1>LazyEye</h1>';
             fieldset.appendChild(legend);
@@ -48,7 +51,7 @@ $(document).ready(function(){
                     continue;
                 pTag = document.createElement('p');
                 label= document.createElement('label');
-                label.innerHTML = '<b>'+key+'</b>';
+                label.innerHTML = '<b>'+key+'</b> ('+collectionData[key].length+')';
                 textarea = document.createElement('textarea');
                 textarea.id = key;
                 textarea.name = key;
@@ -61,8 +64,7 @@ $(document).ready(function(){
                 pTag.appendChild(textarea);
                 fieldset.appendChild(pTag);
             }
-            body = document.getElementsByTagName('body')[0];
-            body.appendChild(fieldset);
+            $(document.body).prepend(fieldset);
 		}
 	});
 });
