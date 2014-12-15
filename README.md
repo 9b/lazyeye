@@ -16,4 +16,4 @@ The extension allows for users to specify their endpoint that should recieve the
 | collectionData  | All the data collected, deduplicated and organized. |
 | collectionCount | Number of items collected.                          |
 
-To install, check the extension out and load the unpacked version into your browser. 
+To install, check the extension out and load the unpacked version into your browser or you can install from Google with the following link - https://chrome.google.com/webstore/detail/lazyeye/fcabijfilbebddchoefpglmnohbehgjk
